@@ -1,0 +1,57 @@
+<div class="page header login">
+  <h1>{{controller.message}}</h1>
+</div>
+
+	<div class="container text-center">
+	    <form class="form-signin" ng-submit="controller.doLogin(loginData)">
+        <h2>Social Login</h2>
+        <p>
+          <button type="button" class="btn btn-social-icon btn-facebook" ng-click="controller.facebook()"><span class="fa fa-facebook"></span></button>&nbsp
+          <button type="button" class="btn btn-social-icon btn-twitter" ng-click="controller.twitter()"><span class="fa fa-twitter"></span></button>&nbsp
+          <button type="button" class="btn btn-social-icon btn-google" ng-click="controller.google()"><span class="fa fa-google-plus"></span></button>
+        </p>
+        <hr>
+        <h3>Or use your local account</h3>
+	        <input class="form-control" type="text" placeholder="username" ng-model="controller.loginData.username">
+          <br>
+	        <input class="form-control" type="text" placeholder="Password" ng-model="controller.loginData.password">
+          <br>
+          <button class="btn btn-success btn-social" type="submit"><span class="fa fa-plane"></span>Login</button>
+	    </form>
+    </div>
+<br />
+
+<div class="jumbotron text-center" ng-show="controller.loading">
+  <span class="glyphicon glyphicon-repeat spinner"></span>
+  <p>Loading...</p>
+</div>
+
+<br />
+
+
+<div class="row show-hide-message" ng-show="controller.successMessage">
+  <div class="alert alert-success">{{controller.successMessage}}</div>
+  </div>
+</div>
+
+<br />
+
+<div class="row show-hide-message" ng-show="controller.errorMessage">
+  <div class="alert alert-danger">{{controller.errorMessage}}</div>
+  </div>
+</div>
+
+<div class="row show-hide-message" ng-show="facebook.errorMessage">
+  <div class="alert alert-danger">{{facebook.errorMessage}}</div>
+  </div>
+</div>
+
+<div class="row show-hide-message" ng-show="twitter.errorMessage">
+  <div class="alert alert-danger">{{twitter.errorMessage}}</div>
+  </div>
+</div>
+
+<div class="row show-hide-message" ng-show="google.errorMessage">
+  <div class="alert alert-danger">{{google.errorMessage}}</div>
+  </div>
+</div>

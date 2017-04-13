@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+  <title>myapp</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+
+  <link rel="stylesheet" href="/ngApp/css/site.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <script src="https://use.fontawesome.com/f5aa623d57.js"></script>
+</head>
+
+<body ng-controller="mainCtrl as controller" class="default" ng-class="bodyClass" ng-cloak>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+          <a class="navbar-brand" href="/" ng-show="!controller.isLoggedIn">Tripsy</a>
+          <a class="navbar-brand" href="/travel" ng-show="controller.isLoggedIn">View my trips</a>
+          <a class="navbar-brand pull-right" href="/register" ng-show="!controller.isLoggedIn">Register</a>
+          <a class="navbar-brand pull-right" href="/login" ng-show="!controller.isLoggedIn">Login</a>
+          <a class="navbar-brand pull-right" href="#" ng-click="controller.logout()" ng-show="controller.isLoggedIn">Logout</a>
+          <a class="navbar-brand pull-right" href="/management" ng-show="controller.isLoggedIn && controller.authorized">Management</a>
+          <a class="navbar-brand pull-right" href="/profile" ng-show="controller.isLoggedIn">{{controller.username}}'s Profile</a>
+    </div>
+  </nav>
+
+  <div class="container theme-showcase" role="main">
+
+    <div class="view container" ng-view></div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" data-backdrop="true" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" ng-click="controller.endSession()" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{controller.modalHeader}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{controller.modalBody}}</p>
+            <div class="text-center" ng-show="controller.hideButton">
+              <span class="glyphicon glyphicon-repeat spinner"></span>
+              <p>Please wait...</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  <script src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.5.9/angular-resource.min.js"></script>
+  <script src="https://code.angularjs.org/1.5.9/angular-animate.min.js"></script>
+  <script src="https://code.angularjs.org/1.5.9/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="/ngApp/app.js"></script>
+  <script src="/ngApp/routes.js"></script>
+  <script src="/ngApp/controllers/mainController.js"></script>
+  <script src="/ngApp/controllers/userController.js"></script>
+  <script src="/ngApp/controllers/userManagementController.js"></script>
+  <script src="/ngApp/controllers/tripController.js"></script>
+  <script src="/ngApp/services/services.js"></script>
+  <script src="/ngApp/services/userServices.js"></script>
+  <script src="/ngApp/services/authservices.js"></script>
+  <script src="/ngApp/filters/customFilters.js"></script>
+</body>
+
+</html>

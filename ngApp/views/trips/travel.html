@@ -1,0 +1,117 @@
+<div class="page header" ng-show="trip.location">
+  <h1>View my new trips:<span><button type="button" class="btn btn-success pull-right" data-toggle="modal" data-backdrop="false" data-target="#myModal1">Create new trip</button></span></h1>
+  <hr>
+</div>
+
+<div class="jumbotron solid alert alert-info" ng-show="!trip.location">
+  <h3>Looks like you don't have any trips yet...</h3>
+  <br>
+  <button type="button" class="btn btn-success btn-social" data-toggle="modal" data-backdrop="false" data-target="#myModal1"><span class="fa fa-plane"></span>Click here to get started!</button>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create your next trip here...</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="trip.save()">
+          <div class="form-group">
+            <label>Location:</label>
+            <input ng-model="trip.trip.location" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>name:</label>
+            <input ng-model="trip.trip.name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>description:</label>
+            <textarea ng-model="trip.trip.description" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label>estimatedCost:</label>
+            <input ng-model="trip.trip.estimatedCost" class="form-control" />
+          </div>
+          <div class="row show-hide-message" ng-repeat="error in trip.errorMessage" ng-show="trip.errorMessage">
+            <div class="alert alert-danger">{{error.message}}</div>
+          </div>
+          <div class="jumbotron text-center solid" ng-show="trip.loading2">
+            <span class="glyphicon glyphicon-repeat spinner"></span>
+            <p>Creating trip...</p>
+          </div>
+            <div class="row show-hide-message" ng-show="trip.successMessage2">
+              <div class="alert alert-success">{{trip.successMessage2}}</div>
+            </div>
+          <button class="btn btn-primary">Create Trip</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="trip.clearForm()" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default row" ng-show="trip.location">
+  <div class="col-xs-3">
+    <a ng-click="selectLocation()" class="btn btn-block btn-default btn-lg"  ng-class="getLocationClass(destination)">All Locations</a>
+    <a ng-repeat="destination in trip.trips | orderBy: 'location' | unique: 'location'" ng-click="selectLocation(destination)" ng-class="getLocationClass(destination)" class="btn btn-block btn-default btn-lg">
+       {{destination}}
+     </a>
+  </div>
+  <div class="col-xs-8">
+    <div class="well" ng-repeat="destination in trip.trips | filter: locationFilterFn | range:selectedPage:pageSize ">
+      <h3>
+        <strong>{{destination.name}}</strong>
+        <span class="pull-right label label-primary">
+          {{destination.estimatedCost | currency}}
+        </span>
+      </h3>
+      <span class="lead">{{destination.description}}</span>
+      <span class="pull-right"><a href="/tripEdit/{{destination._id}}">Edit trip</a></span><br>
+      <span class="pull-right"><a href="#"  ng-click="trip.open(destination._id)" data-toggle="modal" data-backdrop="false" data-target="#myModal2">Delete trip</a></span>
+    </div>
+    <div class ="pull-right btn-group">
+      <a ng-repeat="page in trip.trips | filter: locationFilterFn | pageCount:pageSize" ng-click="selectPage($index + 1)" class="btn btn-default" ng-class="getPageClass($index + 1)">
+        {{$index + 1}}
+      </a>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="jumbotron text-center solid" ng-show="trip.loading">
+  <span class="glyphicon glyphicon-repeat spinner"></span>
+  <p>Deleting trip...</p>
+</div>
+
+<div class="row show-hide-message" ng-show="trip.successMessage">
+  <div class="alert alert-success">{{trip.successMessage}}</div>
+  </div>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <h4>Are you sure you want to delete this trip?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="trip.remove(trip.tripId)" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>

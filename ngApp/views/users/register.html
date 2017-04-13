@@ -1,0 +1,42 @@
+<div class="page header">
+  <h1>{{controller.message}}</h1>
+</div>
+
+<div class="text-center">
+  <h1 class="title">Tripsy</h1>
+</div>
+<div class="container text-center register">
+    <form class="form-signin" name ="registerForm" ng-submit="controller.registerUser(regData)">
+      <h4>Register for your new Tripsy account here...</h4>
+      <br>
+      <input class="form-control" type="text" name="name" placeholder="please enter your name" ng-model="controller.regData.name" required />
+      <hr/>
+      <input class="form-control" type="text" name="email" placeholder="please enter your email address" ng-model="controller.regData.email" required />
+      <hr/>
+      <input class="form-control" type="text" name="username" placeholder="Please enter a username" ng-model="controller.regData.username" required />
+      <hr/>
+      <input class="form-control" type="text" name="password" placeholder="Please enter a password" ng-model="controller.regData.password" required />
+      <br/>
+        <button class="btn btn-success btn-social" type="submit"><span class="fa fa-plane"></span>Register</button>
+    </form>
+  </div>
+
+<div class="jumbotron text-center" ng-show="controller.loading">
+  <span class="glyphicon glyphicon-repeat spinner"></span>
+  <p>Loading...</p>
+</div>
+
+<br/>
+
+
+<div class="row show-hide-message" ng-show="controller.successMessage">
+  <div class="alert alert-success">{{controller.successMessage}}</div>
+  </div>
+</div>
+
+<br/>
+
+<div class="row show-hide-message" ng-show="controller.errorMessage">
+  <div class="alert alert-danger">{{controller.errorMessage}}</div>
+  </div>
+</div>
