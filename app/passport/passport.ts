@@ -27,7 +27,7 @@ module.exports = function(app, passport){
    passport.use(new FacebookStrategy({
      clientID: "424854377857684",
      clientSecret: "97c22c8627f82b469de71e4c5d168b5f",
-     callbackUrl: "https://warm-shore-75042.herokuapp.com/auth/facebook/callback",
+     callbackURL: "https://warm-shore-75042.herokuapp.com/auth/facebook/callback",
      //callbackURL: "http://localhost:3000/auth/facebook/callback",
      profileFields: ["id", "displayName", "email"]
    },
@@ -49,7 +49,7 @@ module.exports = function(app, passport){
    passport.use(new TwitterStrategy({
       consumerKey: "aUr949eBXU0wuPbAKZuCuqfCl",
       consumerSecret: "CHJtv2cumMan5SOZeqHh0BtpNiB3RCV3daditES7CNmjz3gauA",
-      callbackUrl: "https://warm-shore-75042.herokuapp.com/auth/twitter/callback",
+      callbackURL: "https://warm-shore-75042.herokuapp.com/auth/twitter/callback",
       //callbackURL: "http://localhost:3000/auth/twitter/callback",
       userProfileURL  : 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
     },
@@ -72,7 +72,7 @@ module.exports = function(app, passport){
     passport.use(new GoogleStrategy({
       clientID: "73057292092-nvvnq11masng9f6gec0l57kdcjllp361.apps.googleusercontent.com",
       clientSecret: "hEFKg9aktxsIWwG_mB0nCcCq",
-      callbackUrl: "https://warm-shore-75042.herokuapp.com/auth/google/callback",
+      callbackURL: "https://warm-shore-75042.herokuapp.com/auth/google/callback",
       //callbackURL: "http://localhost:3000/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, done) {
