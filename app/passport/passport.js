@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
     passport.use(new FacebookStrategy({
         clientID: "424854377857684",
         clientSecret: "97c22c8627f82b469de71e4c5d168b5f",
-        callbackURL: "https://desolate-wave-35568.herokuapp.com/auth/facebook/callback",
+        callbackURL: "https://warm-shore-75042.herokuapp.com/facebook/callback",
         profileFields: ["id", "displayName", "email"]
     }, function (accessToken, refreshToken, profile, done) {
         User.findOne({ email: profile._json.email }).select("username password email").exec(function (err, user) {
@@ -40,7 +40,7 @@ module.exports = function (app, passport) {
     passport.use(new TwitterStrategy({
         consumerKey: "aUr949eBXU0wuPbAKZuCuqfCl",
         consumerSecret: "CHJtv2cumMan5SOZeqHh0BtpNiB3RCV3daditES7CNmjz3gauA",
-        callbackURL: "https://desolate-wave-35568.herokuapp.com/auth/twitter/callback",
+        callbackURL: "https://warm-shore-75042.herokuapp.com/twitter/callback",
         userProfileURL: 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
     }, function (token, tokenSecret, profile, done) {
         User.findOne({ email: profile.emails[0].value }).select("username password email").exec(function (err, user) {
@@ -58,7 +58,7 @@ module.exports = function (app, passport) {
     passport.use(new GoogleStrategy({
         clientID: "73057292092-nvvnq11masng9f6gec0l57kdcjllp361.apps.googleusercontent.com",
         clientSecret: "hEFKg9aktxsIWwG_mB0nCcCq",
-        callbackURL: "https://desolate-wave-35568.herokuapp.com/auth/google/callback",
+        callbackURL: "https://warm-shore-75042.herokuapp.com/auth/google/callback",
     }, function (accessToken, refreshToken, profile, done) {
         User.findOne({ email: profile.emails[0].value }).select("username password email").exec(function (err, user) {
             if (err) {
