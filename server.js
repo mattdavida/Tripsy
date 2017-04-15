@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').config({silent: true});
 var express = require("express");
 var path = require("path");
 var logger = require("morgan");

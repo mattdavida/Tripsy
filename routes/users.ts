@@ -2,7 +2,7 @@ import * as express from 'express';
 var User             = require("../app/models/user");
 import * as jwt from "jsonwebtoken";
 
-let secret = "SecretTest";
+let secret = process.env.SECRET_KEY;
 let router = express.Router();
 let newName;
 let newUsername;

@@ -2,7 +2,7 @@
 var express = require("express");
 var User = require("../app/models/user");
 var jwt = require("jsonwebtoken");
-var secret = "SecretTest";
+var secret = process.env.SECRET_KEY;
 var router = express.Router();
 var newName;
 var newUsername;
@@ -67,9 +67,9 @@ router.post("/authenticate", function (req, res) {
                     res.json({ success: false, message: "Could not authenticate password" });
             }
             else if (validPassword) {
-                var token_1 = jwt.sign({ _id: user._id, username: user.username, email: user.email }, secret, { expiresIn: "24hr" });
+                var token = jwt.sign({ _id: user._id, username: user.username, email: user.email }, secret, { expiresIn: "24hr" });
                 if (!res.headersSent)
-                    res.json({ success: true, message: "User Authenticated", token: token_1 });
+                    res.json({ success: true, message: "User Authenticated", token: token });
             }
         }
     });

@@ -1,3 +1,4 @@
+require('dotenv').config({silent: true});
 import * as express from 'express';
 import * as path from 'path';
 import * as favicon from 'serve-favicon';
@@ -22,7 +23,7 @@ app.listen(process.env.PORT || 3000, function() {
 })
 let social = require("./app/passport/passport")(app, passport);
 
-mongoose.connect("mongodb://test:test@ds023560.mlab.com:23560/mydb").then(() => {
+mongoose.connect(process.env.DB_KEY).then(() => {
   console.log("Succesfully Connected to MongoDB");
 }).catch((err) => {
   console.log("Not connected to MongoDB" + err);
