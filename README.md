@@ -3,8 +3,7 @@ A great way to stay more organized on your trips.
 
 Fullstack - M.E.A.N stack app (mongoDb, express, angular, node)
 
-Database
-One-to-Many - the database includes a one one-to-many relationship between users and trips.
+Database - the database includes a one one-to-many relationship between users and trips.
 
 CRUD - the application supports creating, reading, updating, and deleting at least two entities (trips and users).
 
