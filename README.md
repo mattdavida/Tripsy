@@ -14,3 +14,8 @@ Claims - Some users have privileges that are not shared with other users. For ex
 
 
 App hosted on heroku here: https://warm-shore-75042.herokuapp.com/
+
+### **Tutorials that helped me finish my project:** 
+##### User authentication / user management - https://www.youtube.com/watch?v=6zfnOrHIUtA&t=657s
+##### Pro AngularJS | Adam Freeman - http://www.apress.com/us/book/9781430264484
+##### One to many realationship - https://www.youtube.com/watch?v=jsJzqtA-uDE
